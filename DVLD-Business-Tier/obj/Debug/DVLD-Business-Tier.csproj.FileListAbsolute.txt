@@ -1,0 +1,18 @@
+C:\Users\Anas_\source\repos\DVLD-Business-Tier\bin\Debug\DVLD-Business-Tier.dll
+C:\Users\Anas_\source\repos\DVLD-Business-Tier\bin\Debug\DVLD-Business-Tier.pdb
+C:\Users\Anas_\source\repos\DVLD-Business-Tier\bin\Debug\DVLD-DataAccess-Tier.dll
+C:\Users\Anas_\source\repos\DVLD-Business-Tier\bin\Debug\DVLD-DataAccess-Tier.pdb
+C:\Users\Anas_\source\repos\DVLD-Business-Tier\obj\Debug\DVLD-Business-Tier.csproj.AssemblyReference.cache
+C:\Users\Anas_\source\repos\DVLD-Business-Tier\obj\Debug\DVLD-Business-Tier.csproj.CoreCompileInputs.cache
+C:\Users\Anas_\source\repos\DVLD-Business-Tier\obj\Debug\DVLD-Bus.55CADA65.Up2Date
+C:\Users\Anas_\source\repos\DVLD-Business-Tier\obj\Debug\DVLD-Business-Tier.dll
+C:\Users\Anas_\source\repos\DVLD-Business-Tier\obj\Debug\DVLD-Business-Tier.pdb
+C:\Users\Anas_\source\repos\DVLD Project\DVLD-Business-Tier\bin\Debug\DVLD-Business-Tier.dll
+C:\Users\Anas_\source\repos\DVLD Project\DVLD-Business-Tier\bin\Debug\DVLD-Business-Tier.pdb
+C:\Users\Anas_\source\repos\DVLD Project\DVLD-Business-Tier\bin\Debug\DVLD-DataAccess-Tier.dll
+C:\Users\Anas_\source\repos\DVLD Project\DVLD-Business-Tier\bin\Debug\DVLD-DataAccess-Tier.pdb
+C:\Users\Anas_\source\repos\DVLD Project\DVLD-Business-Tier\obj\Debug\DVLD-Business-Tier.csproj.AssemblyReference.cache
+C:\Users\Anas_\source\repos\DVLD Project\DVLD-Business-Tier\obj\Debug\DVLD-Business-Tier.csproj.CoreCompileInputs.cache
+C:\Users\Anas_\source\repos\DVLD Project\DVLD-Business-Tier\obj\Debug\DVLD-Bus.55CADA65.Up2Date
+C:\Users\Anas_\source\repos\DVLD Project\DVLD-Business-Tier\obj\Debug\DVLD-Business-Tier.dll
+C:\Users\Anas_\source\repos\DVLD Project\DVLD-Business-Tier\obj\Debug\DVLD-Business-Tier.pdb
