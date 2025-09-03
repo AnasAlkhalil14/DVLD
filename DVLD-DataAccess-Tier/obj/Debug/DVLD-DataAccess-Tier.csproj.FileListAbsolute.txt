@@ -10,3 +10,9 @@ C:\Users\Anas_\source\repos\DVLD Project\DVLD-DataAccess-Tier\obj\Debug\DVLD-Dat
 C:\Users\Anas_\source\repos\DVLD Project\DVLD-DataAccess-Tier\obj\Debug\DVLD-DataAccess-Tier.csproj.CoreCompileInputs.cache
 C:\Users\Anas_\source\repos\DVLD Project\DVLD-DataAccess-Tier\obj\Debug\DVLD-DataAccess-Tier.dll
 C:\Users\Anas_\source\repos\DVLD Project\DVLD-DataAccess-Tier\obj\Debug\DVLD-DataAccess-Tier.pdb
+C:\Users\Anas_\source\repos\DVLD Solution\DVLD\DVLD-DataAccess-Tier\bin\Debug\DVLD-DataAccess-Tier.dll
+C:\Users\Anas_\source\repos\DVLD Solution\DVLD\DVLD-DataAccess-Tier\bin\Debug\DVLD-DataAccess-Tier.pdb
+C:\Users\Anas_\source\repos\DVLD Solution\DVLD\DVLD-DataAccess-Tier\obj\Debug\DVLD-DataAccess-Tier.csproj.AssemblyReference.cache
+C:\Users\Anas_\source\repos\DVLD Solution\DVLD\DVLD-DataAccess-Tier\obj\Debug\DVLD-DataAccess-Tier.csproj.CoreCompileInputs.cache
+C:\Users\Anas_\source\repos\DVLD Solution\DVLD\DVLD-DataAccess-Tier\obj\Debug\DVLD-DataAccess-Tier.dll
+C:\Users\Anas_\source\repos\DVLD Solution\DVLD\DVLD-DataAccess-Tier\obj\Debug\DVLD-DataAccess-Tier.pdb

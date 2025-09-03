@@ -33,7 +33,50 @@ namespace DVLD.Applications.Local_Driving_Licences
         {
           RefreshForm();
         }
+        void SetEnaplityForTests()
+        {
+            if (dgvLocalLicenseApplicationsList.SelectedRows.Count <= 0) return; 
+            string AppState = dgvLocalLicenseApplicationsList.CurrentRow.Cells["Status"].Value.ToString();
+            if(AppState.ToLower() =="cancelled")
+            {
+                tsmScheduleVisionTest.Enabled = false;
+                tsmScheduleWrittenTest.Enabled = false;
+                tsmScheduleStreetTest.Enabled = false;
+                return;
+            }
+            int PassedTestCount = Convert.ToInt32(dgvLocalLicenseApplicationsList.CurrentRow.Cells["PassedTestCount"].Value);
+             if(PassedTestCount== 0)
+            {
+                tsmScheduleVisionTest.Enabled=true;
+                tsmScheduleWrittenTest.Enabled=false;
+                tsmScheduleStreetTest.Enabled=false;
+                return;
+            }
+            if (PassedTestCount == 1)
+            {
+                tsmScheduleVisionTest.Enabled = false;
+                tsmScheduleWrittenTest.Enabled = true;
+                tsmScheduleStreetTest.Enabled = false;
 
+                return;
+              }
+            if (PassedTestCount == 2)
+            {
+                tsmScheduleVisionTest.Enabled = false;
+                tsmScheduleWrittenTest.Enabled = false;
+                tsmScheduleStreetTest.Enabled = true ;
+            }
+            if (PassedTestCount == 3)
+            {
+                tsmScheduleVisionTest.Enabled = false;
+                tsmScheduleWrittenTest.Enabled = false;
+                tsmScheduleStreetTest.Enabled = false;
+            }
+
+
+
+
+        }
         void RefreshForm()
         {
             DataTable AllLocalLicenseApplication = clsLocalDrivingLicenseApplications.GetAllLocalLicenseApplication();
@@ -206,6 +249,12 @@ namespace DVLD.Applications.Local_Driving_Licences
 
         private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            SetEnaplityForTests();
 
         }
     }
