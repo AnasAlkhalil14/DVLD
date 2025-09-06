@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace DVLD_DataAccess_Tier
 {
+
+
     public class clsApplicationData
     {
-        public static int Add( int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID, int ApplicationStatus, DateTime LastStatusDate, double PaidFees, int CreatedByUserID)
+        public static int Add(int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID, int ApplicationStatus, DateTime LastStatusDate, double PaidFees, int CreatedByUserID)
         {
             int ApplicationID = -1;
             SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString);
@@ -48,10 +50,10 @@ namespace DVLD_DataAccess_Tier
         public static double GetPaidFeesForApplicationType(int ApplicationTypeID)
         {
             double PaidFees = 0;
-            SqlConnection connection= new SqlConnection(clsConnectionString.ConnectionString);
+            SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString);
             string query = @"SELECT ApplicationFees
 FROM     ApplicationTypes Where ApplicationTypeID=@ApplicationTypeID";
-            SqlCommand command= new SqlCommand(query, connection);
+            SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
             try
             {
@@ -72,11 +74,66 @@ FROM     ApplicationTypes Where ApplicationTypeID=@ApplicationTypeID";
             return PaidFees;
         }
 
+        public static bool GetApplicationInfo(int AppID, ref int ApplicantPersonID, ref DateTime ApplicationDate, ref int ApplicationTypeID, ref int ApplicationStatus, ref DateTime LastStatusDate, ref double PaidFees)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString);
+            string query = @"Select * from Applications where ApplicationID=@AppID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@AppID", AppID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    ApplicantPersonID = Convert.ToInt32(reader["ApplicantPersonID"]);
+                    ApplicationDate = Convert.ToDateTime(reader["ApplicationDate"]);
+                    ApplicationTypeID = Convert.ToInt32(reader["ApplicationTypeID"]);
+                    ApplicationStatus = Convert.ToInt32(reader["ApplicationStatus"]);
+                    LastStatusDate = Convert.ToDateTime(reader["LastStatusDate"]);
+                    PaidFees = Convert.ToDouble(reader["PaidFees"]);
+                    IsFound = true;
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally { connection.Close(); }
+
+
+            return IsFound;
+        }
+
+        public static string GetApplicationType(int ApplicationTypeID)
+        {
+            string Type = "";
+            SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString);
+            string query = @"Select ApplicationTypeTitle from ApplicationTypes where ApplicationTypeID=@ApplicationTypeID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+            try
+            {
+                connection.Open();
+                Type = command.ExecuteScalar().ToString();
+
+            }
+            catch (Exception ex) { }
+            finally { connection.Close(); }
+            return Type;
+
+        }
+
 
 
     }
 
 
 
-}
 
+
+
+}

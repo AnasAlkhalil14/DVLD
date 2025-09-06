@@ -830,8 +830,25 @@ FROM     People INNER JOIN
             return IsExist;
         }
 
+        public static string GetFullName(int PersonID)
+        {
+            string FullName = "";
+SqlConnection connection=new SqlConnection(clsConnectionString.ConnectionString);
+            string query = "Select FullName=FirstName+' '+SecondName+' '+ThirdName+' '+LastName from People where PersonID=@PersonID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+            try
+            {
+                connection.Open();
+                FullName = command.ExecuteScalar().ToString();
 
 
+            }
+            catch (Exception ex)
+            { }
+            finally { connection.Close(); }
+            return FullName;
+        }
 
 
     }

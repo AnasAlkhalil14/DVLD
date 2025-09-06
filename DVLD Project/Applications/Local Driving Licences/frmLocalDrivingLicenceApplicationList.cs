@@ -1,4 +1,5 @@
-﻿using DVLD_Business_Tier;
+﻿using DVLD.Applications.Tests;
+using DVLD_Business_Tier;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -244,6 +245,9 @@ namespace DVLD.Applications.Local_Driving_Licences
 
         private void sToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int LDLAppID = Convert.ToInt32(dgvLocalLicenseApplicationsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+            frmVisionTestAppointment frm = new frmVisionTestAppointment(LDLAppID);
+            frm.ShowDialog();
 
         }
 

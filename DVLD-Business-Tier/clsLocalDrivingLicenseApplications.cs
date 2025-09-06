@@ -13,7 +13,7 @@ namespace DVLD_Business_Tier
         public int LocalDrivingLicenseApplicationID { get; set; }
         public int ApplicationID { get; set; }
         public int LicenseClassID { get; set; }
-
+        public static string LicenseClassString(int LDLAppID) {  return clsLocalDrivingLicenseApplicationsData.GetLicenseClassName(LDLAppID); } 
         public clsLocalDrivingLicenseApplications()
         {
             ApplicationID = -1;
@@ -40,6 +40,16 @@ namespace DVLD_Business_Tier
 
         }
 
+        public static int PassedTestCount(int LDLAppID)
+        {
+            return clsLocalDrivingLicenseApplicationsData.GetPassedTestCount(LDLAppID); 
+
+        }
+        public static int AppID(int LDLAppID)
+        {
+            return clsLocalDrivingLicenseApplicationsData.GetApplicationID(LDLAppID);
+
+        }
         public static DataTable GetAllLocalLicenseApplication()
         {
             return clsLocalDrivingLicenseApplicationsData.GetAllLocalLicenseApplications();

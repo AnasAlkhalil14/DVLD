@@ -10,6 +10,7 @@ namespace DVLD_DataAccess_Tier
 {
     public class clsLocalDrivingLicenseApplicationsData
     {
+
         public static int Add(int ApplicationID, int LicenseClassID)
         {
             int LocalDrivingLicenseApplicationID = -1;
@@ -272,7 +273,68 @@ from Applications a join LocalDrivingLicenseApplications l on a.ApplicationID=l.
 
         }
 
+        public static string GetLicenseClassName(int LocalDrivingLicenseApplicationID)
+        {
+            string ClassName = "";
+            SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString);
+            string query = @"SELECT LicenseClasses.ClassName
+  FROM [DVLD].[dbo].[LocalDrivingLicenseApplications]
+  join LicenseClasses on LocalDrivingLicenseApplications.LicenseClassID=LicenseClasses.LicenseClassID
+  where LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID=@LocalDrivingLicenseApplicationID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            try
+            {
+                connection.Open();
+                ClassName = command.ExecuteScalar().ToString();
 
+            }
+            catch (Exception ex) { }
+            finally { connection.Close(); }
+            return ClassName;
+
+        }
+
+        public static int GetPassedTestCount(int LDLAppID)
+        {
+            int PassedTestCount = -1;
+            SqlConnection connection=new SqlConnection(clsConnectionString.ConnectionString);
+            string query = @"Select count(*) from LocalDrivingLicenseApplications LDLA
+join TestAppointments TA on LDLA.LocalDrivingLicenseApplicationID=TA.LocalDrivingLicenseApplicationID
+join Tests T on T.TestAppointmentID=TA.TestAppointmentID
+where LDLA.LocalDrivingLicenseApplicationID=@LDLAppID and T.TestResult=1;";
+            SqlCommand command=new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLAppID", LDLAppID);
+            try
+            {
+                connection.Open();
+                PassedTestCount = Convert.ToInt32(command.ExecuteScalar());
+            }
+            catch (Exception ex) { }
+            finally { connection.Close(); }
+            return PassedTestCount;
+
+        }
+
+        public static int GetApplicationID(int LDLAppID)
+        {
+            int ApplicationID = -1;
+            SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString);
+            string query = @"
+Select ApplicationID  from LocalDrivingLicenseApplications LDLA
+where LDLA.LocalDrivingLicenseApplicationID=@LDLAppID";
+            SqlCommand command=new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLAppID", LDLAppID);
+            try
+            {
+                connection.Open();
+                ApplicationID = Convert.ToInt32(command.ExecuteScalar());
+            }catch (Exception ex) { }
+            finally { connection.Close(); }
+            return ApplicationID;
+
+
+        }
 
     }
 

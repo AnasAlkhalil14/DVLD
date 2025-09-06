@@ -79,6 +79,10 @@ namespace DVLD_Business_Tier
         {
             return FirstName+" "+SecondName+" "+ThirdName+" "+LastName;
         }
+        public static string FullName(int PersonID)
+        {
+            return clsPersonData.GetFullName(PersonID);
+        }
         public bool Save()
         {
             switch( _Mode )

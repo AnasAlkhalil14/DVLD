@@ -88,3 +88,6 @@ C:\Users\Anas_\source\repos\DVLD Solution\DVLD\DVLD Project\obj\Debug\DVLD-Presi
 C:\Users\Anas_\source\repos\DVLD Solution\DVLD\DVLD Project\obj\Debug\DVLD-Pre.B85F7F47.Up2Date
 C:\Users\Anas_\source\repos\DVLD Solution\DVLD\DVLD Project\obj\Debug\DVLD.exe
 C:\Users\Anas_\source\repos\DVLD Solution\DVLD\DVLD Project\obj\Debug\DVLD.pdb
+C:\Users\Anas_\source\repos\DVLD Solution\DVLD\DVLD Project\obj\Debug\DVLD.Applications.ctrlApplicationBasicInfo.resources
+C:\Users\Anas_\source\repos\DVLD Solution\DVLD\DVLD Project\obj\Debug\DVLD.Applications.ctrlDrivingLicenseApplicationInfo.resources
+C:\Users\Anas_\source\repos\DVLD Solution\DVLD\DVLD Project\obj\Debug\DVLD.Applications.Tests.frmVisionTestAppointment.resources
