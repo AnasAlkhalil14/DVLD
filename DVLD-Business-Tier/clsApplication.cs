@@ -79,6 +79,10 @@ namespace DVLD_Business_Tier
 
         }
 
+        public static double ApplicationFees(int ApplicatinTypeID)
+        {
+            return clsApplicationData.GetPaidFeesForApplicationType(ApplicatinTypeID);
+        }
 
 
     }

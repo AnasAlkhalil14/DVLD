@@ -186,6 +186,7 @@
             this.ctrlApplicationBasicInfo1.Name = "ctrlApplicationBasicInfo1";
             this.ctrlApplicationBasicInfo1.Size = new System.Drawing.Size(972, 264);
             this.ctrlApplicationBasicInfo1.TabIndex = 0;
+            this.ctrlApplicationBasicInfo1.Load += new System.EventHandler(this.ctrlApplicationBasicInfo1_Load);
             // 
             // ctrlDrivingLicenseApplicationInfo
             // 

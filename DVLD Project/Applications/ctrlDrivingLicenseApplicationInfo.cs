@@ -34,6 +34,9 @@ namespace DVLD.Applications
 
         }
 
-        
+        private void ctrlApplicationBasicInfo1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

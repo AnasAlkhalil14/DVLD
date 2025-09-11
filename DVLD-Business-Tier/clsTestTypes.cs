@@ -49,6 +49,10 @@ namespace DVLD_Business_Tier
             return clsTestTypesData.Update(ApplicationID, Title,Description, Fees);
         }
 
+        public static double TestFees(int TestTypeID)
+        {
+            return clsTestTypesData.GetTestFees(TestTypeID);
+        }
 
 
 

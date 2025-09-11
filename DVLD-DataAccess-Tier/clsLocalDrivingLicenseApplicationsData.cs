@@ -295,6 +295,27 @@ from Applications a join LocalDrivingLicenseApplications l on a.ApplicationID=l.
 
         }
 
+        public static string GetFullName(int LDLAppID)
+        {
+            string FullName = "";
+            SqlConnection connection=new SqlConnection(clsConnectionString.ConnectionString);
+            string query = @"SELECT FullName=concat_ws(' ',People.FirstName,People.SecondName,People.ThirdName,People.LastName)
+from LocalDrivingLicenseApplications LDLA join Applications A on LDLA.ApplicationID=A.ApplicationID
+join People on A.ApplicantPersonID =People.PersonID
+where LDLA.LocalDrivingLicenseApplicationID=@LDLAppID";
+            SqlCommand command=new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLAppID", LDLAppID);
+            try
+            {
+                connection.Open();
+                FullName = command.ExecuteScalar().ToString();
+
+            }
+            catch (Exception ex) { }
+            finally { connection.Close(); }
+            return FullName;
+        }
+
         public static int GetPassedTestCount(int LDLAppID)
         {
             int PassedTestCount = -1;
@@ -335,6 +356,28 @@ where LDLA.LocalDrivingLicenseApplicationID=@LDLAppID";
 
 
         }
+
+        public static int GetPersonIDByLocalDLAppID(int LDLAppID)
+        {
+            int PersonID = -1;
+            SqlConnection connection=new SqlConnection(clsConnectionString.ConnectionString);
+            string query = @"
+select A.ApplicantPersonID from Applications A join LocalDrivingLicenseApplications LDL
+on A.ApplicationID=LDL.ApplicationID
+where LDL.LocalDrivingLicenseApplicationID=@LDLAppID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLAppID", LDLAppID);
+            try
+            {
+                connection.Open();
+                int.TryParse(command.ExecuteScalar().ToString(), out PersonID);
+            }
+            catch (Exception ex) { }
+            finally { connection.Close(); }
+
+        return PersonID;
+        }
+
 
     }
 

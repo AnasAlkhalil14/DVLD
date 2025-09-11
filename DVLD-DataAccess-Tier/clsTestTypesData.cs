@@ -97,7 +97,26 @@ UPDATE TestTypes
             return isFound;
         }
 
+        public static double GetTestFees(int TestTypeID)
+        {
+            double Fees = 0;
+            SqlConnection connection=new SqlConnection(clsConnectionString.ConnectionString);
+            string query = "Select TestTypeFees from TestTypes where TestTypeID=@TestTypeID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+            try
+            {
+                connection.Open();
+                Fees = Convert.ToDouble(command.ExecuteScalar());
 
+
+            }
+            catch(Exception ex) { }
+            finally { connection.Close(); }
+            return Fees;
+
+
+        }
 
 
 

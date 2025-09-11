@@ -75,6 +75,16 @@ namespace DVLD_Business_Tier
             return clsLocalDrivingLicenseApplicationsData.CanceleApplication(LDLApplicationID);
 
         }
+        public static string FullName(int LDLAppID)
+        {
+            return clsLocalDrivingLicenseApplicationsData.GetFullName(LDLAppID);
+        }
+
+        public static int PersonIDByLocalDLAppID(int LDLAppID)
+        {
+            return clsLocalDrivingLicenseApplicationsData.GetPersonIDByLocalDLAppID(LDLAppID) ;
+        }
+
 
 
     }
