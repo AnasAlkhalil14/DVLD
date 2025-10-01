@@ -109,7 +109,7 @@
             this.gbPersonInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbPersonInfo.Location = new System.Drawing.Point(0, 0);
             this.gbPersonInfo.Name = "gbPersonInfo";
-            this.gbPersonInfo.Size = new System.Drawing.Size(942, 452);
+            this.gbPersonInfo.Size = new System.Drawing.Size(942, 330);
             this.gbPersonInfo.TabIndex = 0;
             this.gbPersonInfo.TabStop = false;
             this.gbPersonInfo.Text = " ";
@@ -127,7 +127,7 @@
             // lblCountry
             // 
             this.lblCountry.AutoSize = true;
-            this.lblCountry.Location = new System.Drawing.Point(605, 174);
+            this.lblCountry.Location = new System.Drawing.Point(605, 132);
             this.lblCountry.Name = "lblCountry";
             this.lblCountry.Size = new System.Drawing.Size(68, 25);
             this.lblCountry.TabIndex = 60;
@@ -136,7 +136,7 @@
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(605, 106);
+            this.lblPhone.Location = new System.Drawing.Point(605, 88);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(68, 25);
             this.lblPhone.TabIndex = 59;
@@ -145,7 +145,7 @@
             // lblNationalNo
             // 
             this.lblNationalNo.AutoSize = true;
-            this.lblNationalNo.Location = new System.Drawing.Point(221, 171);
+            this.lblNationalNo.Location = new System.Drawing.Point(221, 135);
             this.lblNationalNo.Name = "lblNationalNo";
             this.lblNationalNo.Size = new System.Drawing.Size(68, 25);
             this.lblNationalNo.TabIndex = 58;
@@ -154,7 +154,7 @@
             // lblGendor
             // 
             this.lblGendor.AutoSize = true;
-            this.lblGendor.Location = new System.Drawing.Point(221, 236);
+            this.lblGendor.Location = new System.Drawing.Point(221, 180);
             this.lblGendor.Name = "lblGendor";
             this.lblGendor.Size = new System.Drawing.Size(68, 25);
             this.lblGendor.TabIndex = 57;
@@ -163,16 +163,17 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(221, 302);
+            this.lblEmail.Location = new System.Drawing.Point(222, 220);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(68, 25);
             this.lblEmail.TabIndex = 56;
             this.lblEmail.Text = "[????]";
+            this.lblEmail.Click += new System.EventHandler(this.lblEmail_Click);
             // 
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(221, 383);
+            this.lblAddress.Location = new System.Drawing.Point(222, 278);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(68, 25);
             this.lblAddress.TabIndex = 55;
@@ -191,7 +192,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblName.Location = new System.Drawing.Point(221, 106);
+            this.lblName.Location = new System.Drawing.Point(222, 82);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(68, 25);
             this.lblName.TabIndex = 53;
@@ -250,7 +251,7 @@
             // pictureBox9
             // 
             this.pictureBox9.Image = global::DVLD.Properties.Resources.Country_32;
-            this.pictureBox9.Location = new System.Drawing.Point(170, 383);
+            this.pictureBox9.Location = new System.Drawing.Point(170, 272);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(35, 28);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -260,7 +261,7 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = global::DVLD.Properties.Resources.Email_32;
-            this.pictureBox8.Location = new System.Drawing.Point(170, 299);
+            this.pictureBox8.Location = new System.Drawing.Point(170, 217);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(35, 28);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -270,7 +271,7 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = global::DVLD.Properties.Resources.Phone_32;
-            this.pictureBox7.Location = new System.Drawing.Point(553, 174);
+            this.pictureBox7.Location = new System.Drawing.Point(553, 132);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(35, 28);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -280,7 +281,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::DVLD.Properties.Resources.Calendar_32;
-            this.pictureBox6.Location = new System.Drawing.Point(553, 103);
+            this.pictureBox6.Location = new System.Drawing.Point(553, 85);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(35, 28);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -290,7 +291,7 @@
             // pbGendor
             // 
             this.pbGendor.Image = global::DVLD.Properties.Resources.Man_32;
-            this.pbGendor.Location = new System.Drawing.Point(170, 232);
+            this.pbGendor.Location = new System.Drawing.Point(171, 177);
             this.pbGendor.Name = "pbGendor";
             this.pbGendor.Size = new System.Drawing.Size(35, 28);
             this.pbGendor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -300,7 +301,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::DVLD.Properties.Resources.Number_32;
-            this.pictureBox3.Location = new System.Drawing.Point(170, 167);
+            this.pictureBox3.Location = new System.Drawing.Point(171, 132);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(35, 28);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -310,7 +311,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::DVLD.Properties.Resources.Person_32;
-            this.pictureBox2.Location = new System.Drawing.Point(170, 106);
+            this.pictureBox2.Location = new System.Drawing.Point(171, 82);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(35, 28);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -331,17 +332,18 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(37, 386);
+            this.label8.Location = new System.Drawing.Point(33, 275);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(92, 25);
             this.label8.TabIndex = 40;
             this.label8.Text = "Address";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(440, 177);
+            this.label7.Location = new System.Drawing.Point(440, 135);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(95, 25);
             this.label7.TabIndex = 39;
@@ -351,17 +353,18 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(37, 306);
+            this.label6.Location = new System.Drawing.Point(36, 217);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 25);
             this.label6.TabIndex = 38;
             this.label6.Text = "Email:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // ddfds
             // 
             this.ddfds.AutoSize = true;
             this.ddfds.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddfds.Location = new System.Drawing.Point(454, 110);
+            this.ddfds.Location = new System.Drawing.Point(440, 85);
             this.ddfds.Name = "ddfds";
             this.ddfds.Size = new System.Drawing.Size(81, 25);
             this.ddfds.TabIndex = 37;
@@ -371,11 +374,12 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(37, 236);
+            this.label5.Location = new System.Drawing.Point(33, 177);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 25);
             this.label5.TabIndex = 36;
             this.label5.Text = "Gendor:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -391,7 +395,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(33, 171);
+            this.label3.Location = new System.Drawing.Point(33, 132);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(131, 25);
             this.label3.TabIndex = 34;
@@ -401,11 +405,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(33, 110);
+            this.label1.Location = new System.Drawing.Point(33, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 25);
             this.label1.TabIndex = 33;
             this.label1.Text = "Name:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // ctrlPersonInfo
             // 
@@ -413,7 +418,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gbPersonInfo);
             this.Name = "ctrlPersonInfo";
-            this.Size = new System.Drawing.Size(942, 452);
+            this.Size = new System.Drawing.Size(942, 330);
             this.Load += new System.EventHandler(this.ctrlPersonInfo_Load);
             this.gbPersonInfo.ResumeLayout(false);
             this.gbPersonInfo.PerformLayout();

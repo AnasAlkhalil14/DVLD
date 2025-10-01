@@ -1,38 +1,83 @@
-﻿using DVLD_Business_Tier;
+﻿using DVLD.Properties;
+using DVLD_Business_Tier;
 using System;
 using System.Windows.Forms;
 
 namespace DVLD.Applications.Tests
 {
-    public partial class frmScheduleVisionTest : Form
+    public partial class frmScheduleTest : Form
     {
         int LDLAppIDD;
         bool IsRetakeTest;
         bool IsUpdate;
-        int AppointmentID;
-        public frmScheduleVisionTest(int LDLAppID,bool IsRetakeTest)
+        clsTestAppointment Appointment;
+        int TestTypeID;
+        public frmScheduleTest(int LDLAppID,bool IsRetakeTest,int TestTypeID)
         {
             InitializeComponent();
             this.LDLAppIDD = LDLAppID;
             this.IsRetakeTest = IsRetakeTest;
             this.IsUpdate = false;
+            this.TestTypeID = TestTypeID;
+            if (IsRetakeTest)
+            {
+                dtpDate.MinDate=clsTestAppointment.GetLastAppointmentDate(LDLAppID,1).AddDays(1);
+                dtpDate.MaxDate=dtpDate.MinDate.AddMonths(1);
+                dtpDate.Value = dtpDate.MinDate;
+            }
+            else
+            {
+                dtpDate.MinDate =DateTime.Now;
+                dtpDate.MaxDate = dtpDate.MinDate.AddMonths(1);
+                dtpDate.Value = dtpDate.MinDate;
+
+            }
+
         }
 
-        public frmScheduleVisionTest(int LDLAppID, bool IsRetakeTest,int AppointmentID,bool IsLock)
+        public frmScheduleTest(int LDLAppID, bool IsRetakeTest,int AppointmentID,bool IsLock)
         {
             InitializeComponent();
+            Appointment=clsTestAppointment.Find(AppointmentID);
+            TestTypeID=Appointment.TestTypeID;
             this.LDLAppIDD = LDLAppID;
-            this.IsRetakeTest = IsRetakeTest;
-            this.IsUpdate = true ;
-            this.AppointmentID = AppointmentID;
+            if(Appointment.RetakeTestApplicationID==-1)
+            this.IsRetakeTest =false;
+            else
+                this.IsRetakeTest=true;
+
+                this.IsUpdate = true;
+       
 if(IsLock)
             {
+              
                 lblLockNote.Visible = true;
                 dtpDate.Enabled= false;
                 btnSave.Enabled= false;
             }
+else if (IsRetakeTest)
+            {
+               ;
+                dtpDate.MinDate = clsTestAppointment.GetLastAppointmentDate(LDLAppID,Appointment.TestTypeID).AddDays(1);
+                dtpDate.MaxDate = dtpDate.MinDate.AddMonths(1);
+
+            }
+else
+            {
+                dtpDate.MinDate = DateTime.Now;
+                dtpDate.MaxDate = dtpDate.MinDate.AddMonths(1);
+                if (Appointment.AppointmentDate < DateTime.Now || Appointment.AppointmentDate > dtpDate.MaxDate)
+                {
+                    MessageBox.Show("Your old date is no longer valid,choose another one", "Wrong old Date", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    ;dtpDate.Value=DateTime.Now;
+                    return;
+                }
 
 
+            }
+            dtpDate.Value = Appointment.AppointmentDate;
+
+            
         }
 
 
@@ -44,9 +89,9 @@ if(IsLock)
             lblLDLAppID.Text=LDLAppIDD.ToString();
             lblLicenseClass.Text=clsLocalDrivingLicenseApplications.LicenseClassString(LDLAppIDD);
             lblFullName.Text = clsLocalDrivingLicenseApplications.FullName(LDLAppIDD);
-            lblTrial.Text = clsTest.TrialCount(LDLAppIDD,1).ToString();
-            dtpDate.Value = DateTime.Now;
-            lblFees.Text = clsTestTypes.TestFees(1).ToString();
+            lblTrial.Text = clsTest.TrialCount(LDLAppIDD,TestTypeID).ToString();
+           
+            lblFees.Text = clsTestTypes.TestFees(TestTypeID).ToString();
             if(IsRetakeTest)
             {
                 gbRetakeTestInfo.Enabled = true;
@@ -57,19 +102,40 @@ if(IsLock)
             else
             {
                 gbRetakeTestInfo.Enabled = false;
-                lblScheduleTest.Text = "Schedule Test";
+                lblScheduleTest.Text = "         Schedule Test";
                 lblRTestAppFees.Text = ".....";
                 lblRTestAppFees.Tag = 0;
             }
-                lblTotalFees.Text = (Convert.ToDouble(lblFees.Text) + Convert.ToDouble(lblRTestAppFees.Tag)).ToString();
+            lblTotalFees.Text = (Convert.ToDouble(lblFees.Text) + Convert.ToDouble(lblRTestAppFees.Tag)).ToString();
+            
 
         }
+        void SetHeaderFormByTestType()
+        {
+            if (TestTypeID == 1)
+            {
+                
+                pbTestType.Image = Resources.Vision_512;
+            }
+            else if (TestTypeID == 2)
+            {
+                pbTestType.Image = Resources.Written_Test_512;
+            }
+            else
+            {
+                pbTestType.Image = Resources.driving_test_512; ;
 
+            }
+
+
+
+        }
         private void frmScheduleVisionTest_Load(object sender, EventArgs e)
         {
-            dtpDate.MinDate=DateTime.Now;
-            dtpDate.MaxDate=DateTime.Now.AddMonths(1);
+          
+           
             LoadData();
+            SetHeaderFormByTestType();
 
         }
 
@@ -77,7 +143,7 @@ if(IsLock)
         {
             if (IsUpdate)
             {
-                if(clsTestAppointment.EditAppointmentDate(AppointmentID,dtpDate.Value))
+                if(clsTestAppointment.EditAppointmentDate(Appointment.TestAppointmentID, dtpDate.Value))
                 return true;
                 else
                     return false;
@@ -85,10 +151,10 @@ if(IsLock)
 
             }
             clsTestAppointment appointment = new clsTestAppointment();
-            appointment.TestTypeID = 1;
+            appointment.TestTypeID = TestTypeID;
             appointment.AppointmentDate = dtpDate.Value;
             appointment.LocalDrivingLicenseApplicationID = LDLAppIDD;
-            appointment.PaidFees = clsTestTypes.TestFees(1);
+            appointment.PaidFees = clsTestTypes.TestFees(TestTypeID);
             appointment.IsLocked = 0;
       if(IsRetakeTest)
             {
@@ -122,6 +188,11 @@ if(IsLock)
             {
                 MessageBox.Show("Some thing wrong happen,failed save","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+        }
+
+        private void gbVisionTest_Enter(object sender, EventArgs e)
+        {
 
         }
     }

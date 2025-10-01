@@ -53,6 +53,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblLocalDrivingApplicationID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblMode = new System.Windows.Forms.Label();
             this.tcApplicationInfo.SuspendLayout();
             this.tpPersonalInfo.SuspendLayout();
             this.tpApplicationInfo.SuspendLayout();
@@ -70,11 +71,11 @@
             this.lblAddEditUser.AutoSize = true;
             this.lblAddEditUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAddEditUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblAddEditUser.Location = new System.Drawing.Point(66, 19);
+            this.lblAddEditUser.Location = new System.Drawing.Point(247, 19);
             this.lblAddEditUser.Name = "lblAddEditUser";
-            this.lblAddEditUser.Size = new System.Drawing.Size(850, 54);
+            this.lblAddEditUser.Size = new System.Drawing.Size(740, 54);
             this.lblAddEditUser.TabIndex = 3;
-            this.lblAddEditUser.Text = "New Local Driving Licence Application";
+            this.lblAddEditUser.Text = "Local Driving Licence Application";
             // 
             // tcApplicationInfo
             // 
@@ -104,8 +105,7 @@
             this.tcApplicationInfo.TabIndex = 2;
             this.tcApplicationInfo.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
             this.tcApplicationInfo.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
-            this.tcApplicationInfo.Enter += new System.EventHandler(this.tcApplicationInfo_Enter);
-            // 
+             // 
             // tpPersonalInfo
             // 
             this.tpPersonalInfo.BackColor = System.Drawing.Color.White;
@@ -141,7 +141,7 @@
             this.ctrlFilterPerson1.Name = "ctrlFilterPerson1";
             this.ctrlFilterPerson1.Size = new System.Drawing.Size(984, 579);
             this.ctrlFilterPerson1.TabIndex = 0;
-            // 
+             // 
             // tpApplicationInfo
             // 
             this.tpApplicationInfo.Controls.Add(this.btnClose);
@@ -154,8 +154,7 @@
             this.tpApplicationInfo.TabIndex = 1;
             this.tpApplicationInfo.Text = "Application Info";
             this.tpApplicationInfo.UseVisualStyleBackColor = true;
-            this.tpApplicationInfo.Click += new System.EventHandler(this.tpApplicationInfo_Click);
-            // 
+             // 
             // btnClose
             // 
             this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -242,8 +241,7 @@
             this.cbLicenceClass.Name = "cbLicenceClass";
             this.cbLicenceClass.Size = new System.Drawing.Size(353, 33);
             this.cbLicenceClass.TabIndex = 138;
-            this.cbLicenceClass.SelectedIndexChanged += new System.EventHandler(this.cbLicenceClass_SelectedIndexChanged);
-            // 
+             // 
             // pictureBox7
             // 
             this.pictureBox7.Image = global::DVLD.Properties.Resources.Renew_Driving_License_32;
@@ -374,12 +372,24 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "D.L.Application ID:";
             // 
+            // lblMode
+            // 
+            this.lblMode.AutoSize = true;
+            this.lblMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblMode.Location = new System.Drawing.Point(71, 19);
+            this.lblMode.Name = "lblMode";
+            this.lblMode.Size = new System.Drawing.Size(180, 54);
+            this.lblMode.TabIndex = 4;
+            this.lblMode.Text = "Update";
+            // 
             // frmNewLocalDriving_Application
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1037, 852);
+            this.Controls.Add(this.lblMode);
             this.Controls.Add(this.lblAddEditUser);
             this.Controls.Add(this.tcApplicationInfo);
             this.Name = "frmNewLocalDriving_Application";
@@ -429,5 +439,6 @@
         private System.Windows.Forms.ComboBox cbLicenceClass;
         private System.Windows.Forms.Label lblCreatedBy;
         private System.Windows.Forms.Label lblApplicationFees;
+        private System.Windows.Forms.Label lblMode;
     }
 }

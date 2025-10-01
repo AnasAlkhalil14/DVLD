@@ -17,7 +17,7 @@ namespace DVLD.Applications
         {
             InitializeComponent();
         }
-
+        public event Action OnEditPerson;
         public void LoadDataInfo(int LDLAppID)
         {
             lblDLAppID.Text = LDLAppID.ToString();
@@ -28,10 +28,17 @@ namespace DVLD.Applications
 
         }
 
-
+        public int LDLAppID { get { return Convert.ToInt32(lblDLAppID.Text); } }
+        public int ApplicationID { get { return ctrlApplicationBasicInfo1.ApplicationID; } }
+        public int PersonID { get { return ctrlApplicationBasicInfo1.PersonID; } }
         private void ctrlDrivingLicenseApplicationInfo_Load(object sender, EventArgs e)
         {
+            ctrlApplicationBasicInfo1.OnEditPerson += CtrlApplicationBasicInfo1_OnEditPerson;
+        }
 
+        private void CtrlApplicationBasicInfo1_OnEditPerson()
+        {
+            OnEditPerson?.Invoke();
         }
 
         private void ctrlApplicationBasicInfo1_Load(object sender, EventArgs e)

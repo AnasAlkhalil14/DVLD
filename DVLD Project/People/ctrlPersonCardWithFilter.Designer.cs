@@ -116,7 +116,7 @@
             // 
             this.ctrlPersonInfo1.Location = new System.Drawing.Point(23, 104);
             this.ctrlPersonInfo1.Name = "ctrlPersonInfo1";
-            this.ctrlPersonInfo1.Size = new System.Drawing.Size(942, 452);
+            this.ctrlPersonInfo1.Size = new System.Drawing.Size(942, 319);
             this.ctrlPersonInfo1.TabIndex = 18;
             // 
             // ctrlFilterPerson
@@ -127,7 +127,7 @@
             this.Controls.Add(this.ctrlPersonInfo1);
             this.Controls.Add(this.gbFilters);
             this.Name = "ctrlFilterPerson";
-            this.Size = new System.Drawing.Size(984, 579);
+            this.Size = new System.Drawing.Size(971, 429);
             this.Load += new System.EventHandler(this.ctrlFilterPerson_Load);
             this.gbFilters.ResumeLayout(false);
             this.gbFilters.PerformLayout();
@@ -138,10 +138,10 @@
         #endregion
         private System.Windows.Forms.Button btnAddNewPerson;
         private System.Windows.Forms.Button btnFind;
-        private System.Windows.Forms.ComboBox cbFilterBy;
-        private System.Windows.Forms.TextBox txtFilterValue;
         private System.Windows.Forms.Label label1;
         public ctrlPersonInfo ctrlPersonInfo1;
         public System.Windows.Forms.GroupBox gbFilters;
+        public System.Windows.Forms.ComboBox cbFilterBy;
+        public System.Windows.Forms.TextBox txtFilterValue;
     }
 }

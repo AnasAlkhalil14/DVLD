@@ -3,35 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0C3B5DEC-29F8-4D0E-8129-582D770422BB}|DVLD-Presintaion-Tier.csproj|c:\\users\\anas_\\source\\repos\\dvld solution\\dvld\\dvld project\\applications\\tests\\vision test\\frmselectvisiontestappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C3B5DEC-29F8-4D0E-8129-582D770422BB}|DVLD-Presintaion-Tier.csproj|solutionrelative:applications\\tests\\vision test\\frmselectvisiontestappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0C3B5DEC-29F8-4D0E-8129-582D770422BB}|DVLD-Presintaion-Tier.csproj|c:\\users\\anas_\\source\\repos\\dvld solution\\dvld\\dvld project\\applications\\detain release license\\frmreleasedetainedlicense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C3B5DEC-29F8-4D0E-8129-582D770422BB}|DVLD-Presintaion-Tier.csproj|solutionrelative:applications\\detain release license\\frmreleasedetainedlicense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C3B5DEC-29F8-4D0E-8129-582D770422BB}|DVLD-Presintaion-Tier.csproj|c:\\users\\anas_\\source\\repos\\dvld solution\\dvld\\dvld project\\applications\\tests\\vision test\\frmvisiontestappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C3B5DEC-29F8-4D0E-8129-582D770422BB}|DVLD-Presintaion-Tier.csproj|solutionrelative:applications\\tests\\vision test\\frmvisiontestappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{469A0883-2D59-44DB-8475-9C15A78EF831}|..\\DVLD-DataAccess-Tier\\DVLD-DataAccess-Tier.csproj|c:\\users\\anas_\\source\\repos\\dvld solution\\dvld\\dvld-dataaccess-tier\\clsdetainedlicensedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C3B5DEC-29F8-4D0E-8129-582D770422BB}|DVLD-Presintaion-Tier.csproj|c:\\users\\anas_\\source\\repos\\dvld solution\\dvld\\dvld project\\applications\\tests\\vision test\\frmvisiontestappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0C3B5DEC-29F8-4D0E-8129-582D770422BB}|DVLD-Presintaion-Tier.csproj|solutionrelative:applications\\tests\\vision test\\frmvisiontestappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{0C3B5DEC-29F8-4D0E-8129-582D770422BB}|DVLD-Presintaion-Tier.csproj|c:\\users\\anas_\\source\\repos\\dvld solution\\dvld\\dvld project\\applications\\detain release license\\frmreleasedetainedlicense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0C3B5DEC-29F8-4D0E-8129-582D770422BB}|DVLD-Presintaion-Tier.csproj|solutionrelative:applications\\detain release license\\frmreleasedetainedlicense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C3B5DEC-29F8-4D0E-8129-582D770422BB}|DVLD-Presintaion-Tier.csproj|C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\applications\\tests\\vision test\\frmselectvisiontestappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0C3B5DEC-29F8-4D0E-8129-582D770422BB}|DVLD-Presintaion-Tier.csproj|solutionrelative:applications\\tests\\vision test\\frmselectvisiontestappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{469A0883-2D59-44DB-8475-9C15A78EF831}|..\\DVLD-DataAccess-Tier\\DVLD-DataAccess-Tier.csproj|c:\\users\\anas_\\source\\repos\\dvld solution\\dvld\\dvld-dataaccess-tier\\clstestappointmentdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63C6BD79-CE56-4BAD-B426-32C7369E88B2}|..\\DVLD-Business-Tier\\DVLD-Business-Tier.csproj|c:\\users\\anas_\\source\\repos\\dvld solution\\dvld\\dvld-business-tier\\clstestappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63C6BD79-CE56-4BAD-B426-32C7369E88B2}|..\\DVLD-Business-Tier\\DVLD-Business-Tier.csproj|c:\\users\\anas_\\source\\repos\\dvld solution\\dvld\\dvld-business-tier\\clsapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63C6BD79-CE56-4BAD-B426-32C7369E88B2}|..\\DVLD-Business-Tier\\DVLD-Business-Tier.csproj|c:\\users\\anas_\\source\\repos\\dvld solution\\dvld\\dvld-business-tier\\clslocaldrivinglicenseapplications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{469A0883-2D59-44DB-8475-9C15A78EF831}|..\\DVLD-DataAccess-Tier\\DVLD-DataAccess-Tier.csproj|c:\\users\\anas_\\source\\repos\\dvld solution\\dvld\\dvld-dataaccess-tier\\clslocaldrivinglicenseapplicationsdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0C3B5DEC-29F8-4D0E-8129-582D770422BB}|DVLD-Presintaion-Tier.csproj|c:\\users\\anas_\\source\\repos\\dvld solution\\dvld\\dvld project\\applications\\detain release license\\frmdetainedlicenseslist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0C3B5DEC-29F8-4D0E-8129-582D770422BB}|DVLD-Presintaion-Tier.csproj|solutionrelative:applications\\detain release license\\frmdetainedlicenseslist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -41,122 +25,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "clsTestAppointment.cs",
-              "DocumentMoniker": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD-Business-Tier\\clsTestAppointment.cs",
-              "RelativeDocumentMoniker": "..\\DVLD-Business-Tier\\clsTestAppointment.cs",
-              "ToolTip": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD-Business-Tier\\clsTestAppointment.cs",
-              "RelativeToolTip": "..\\DVLD-Business-Tier\\clsTestAppointment.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAIwF4AAAAMAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "clsDetainedLicenseData.cs",
+              "DocumentMoniker": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD-DataAccess-Tier\\clsDetainedLicenseData.cs",
+              "RelativeDocumentMoniker": "..\\DVLD-DataAccess-Tier\\clsDetainedLicenseData.cs",
+              "ToolTip": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD-DataAccess-Tier\\clsDetainedLicenseData.cs",
+              "RelativeToolTip": "..\\DVLD-DataAccess-Tier\\clsDetainedLicenseData.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAwwIcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-11T10:22:24.175Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "clsApplication.cs",
-              "DocumentMoniker": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD-Business-Tier\\clsApplication.cs",
-              "RelativeDocumentMoniker": "..\\DVLD-Business-Tier\\clsApplication.cs",
-              "ToolTip": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD-Business-Tier\\clsApplication.cs",
-              "RelativeToolTip": "..\\DVLD-Business-Tier\\clsApplication.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAkwCMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T07:49:08.035Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "clsLocalDrivingLicenseApplications.cs",
-              "DocumentMoniker": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD-Business-Tier\\clsLocalDrivingLicenseApplications.cs",
-              "RelativeDocumentMoniker": "..\\DVLD-Business-Tier\\clsLocalDrivingLicenseApplications.cs",
-              "ToolTip": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD-Business-Tier\\clsLocalDrivingLicenseApplications.cs",
-              "RelativeToolTip": "..\\DVLD-Business-Tier\\clsLocalDrivingLicenseApplications.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwFIAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T07:43:33.908Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "clsLocalDrivingLicenseApplicationsData.cs",
-              "DocumentMoniker": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD-DataAccess-Tier\\clsLocalDrivingLicenseApplicationsData.cs",
-              "RelativeDocumentMoniker": "..\\DVLD-DataAccess-Tier\\clsLocalDrivingLicenseApplicationsData.cs",
-              "ToolTip": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD-DataAccess-Tier\\clsLocalDrivingLicenseApplicationsData.cs",
-              "RelativeToolTip": "..\\DVLD-DataAccess-Tier\\clsLocalDrivingLicenseApplicationsData.cs",
-              "ViewState": "AgIAAJ8AAAAAAAAAAAA2wGcBAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T07:26:25.631Z",
+              "WhenOpened": "2025-10-01T07:45:38.462Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmSelectVisionTestAppointment.cs",
-              "DocumentMoniker": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\Applications\\Tests\\Vision Test\\frmSelectVisionTestAppointment.cs",
-              "RelativeDocumentMoniker": "Applications\\Tests\\Vision Test\\frmSelectVisionTestAppointment.cs",
-              "ToolTip": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\Applications\\Tests\\Vision Test\\frmSelectVisionTestAppointment.cs",
-              "RelativeToolTip": "Applications\\Tests\\Vision Test\\frmSelectVisionTestAppointment.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAlwCUAAAAAAAAAAAAAAA==",
+              "Title": "frmReleaseDetainedLicense.cs",
+              "DocumentMoniker": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\Applications\\Detain Release License\\frmReleaseDetainedLicense.cs",
+              "RelativeDocumentMoniker": "Applications\\Detain Release License\\frmReleaseDetainedLicense.cs",
+              "ToolTip": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\Applications\\Detain Release License\\frmReleaseDetainedLicense.cs",
+              "RelativeToolTip": "Applications\\Detain Release License\\frmReleaseDetainedLicense.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAASwIYAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-11T06:00:03.653Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmVisionTestAppointment.cs",
-              "DocumentMoniker": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\Applications\\Tests\\Vision Test\\frmVisionTestAppointment.cs",
-              "RelativeDocumentMoniker": "Applications\\Tests\\Vision Test\\frmVisionTestAppointment.cs",
-              "ToolTip": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\Applications\\Tests\\Vision Test\\frmVisionTestAppointment.cs",
-              "RelativeToolTip": "Applications\\Tests\\Vision Test\\frmVisionTestAppointment.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAhwF0AAABlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-11T05:57:00.964Z",
+              "WhenOpened": "2025-10-01T07:42:37.864Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "frmVisionTestAppointment.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\Applications\\Tests\\Vision Test\\frmVisionTestAppointment.cs",
-              "RelativeDocumentMoniker": "Applications\\Tests\\Vision Test\\frmVisionTestAppointment.cs",
-              "ToolTip": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\Applications\\Tests\\Vision Test\\frmVisionTestAppointment.cs [Design]",
-              "RelativeToolTip": "Applications\\Tests\\Vision Test\\frmVisionTestAppointment.cs [Design]",
+              "Title": "frmReleaseDetainedLicense.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\Applications\\Detain Release License\\frmReleaseDetainedLicense.cs",
+              "RelativeDocumentMoniker": "Applications\\Detain Release License\\frmReleaseDetainedLicense.cs",
+              "ToolTip": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\Applications\\Detain Release License\\frmReleaseDetainedLicense.cs [Design]",
+              "RelativeToolTip": "Applications\\Detain Release License\\frmReleaseDetainedLicense.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-11T05:56:42.005Z",
+              "WhenOpened": "2025-10-01T07:42:33.576Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "frmSelectVisionTestAppointment.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\Applications\\Tests\\Vision Test\\frmSelectVisionTestAppointment.cs",
-              "RelativeDocumentMoniker": "Applications\\Tests\\Vision Test\\frmSelectVisionTestAppointment.cs",
-              "ToolTip": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\Applications\\Tests\\Vision Test\\frmSelectVisionTestAppointment.cs [Design]",
-              "RelativeToolTip": "Applications\\Tests\\Vision Test\\frmSelectVisionTestAppointment.cs [Design]",
+              "Title": "frmDetainedLicensesList.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\Applications\\Detain Release License\\frmDetainedLicensesList.cs",
+              "RelativeDocumentMoniker": "Applications\\Detain Release License\\frmDetainedLicensesList.cs",
+              "ToolTip": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD Project\\Applications\\Detain Release License\\frmDetainedLicensesList.cs [Design]",
+              "RelativeToolTip": "Applications\\Detain Release License\\frmDetainedLicensesList.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T05:57:30.902Z",
+              "WhenOpened": "2025-09-30T12:04:13.142Z",
               "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "clsTestAppointmentData.cs",
-              "DocumentMoniker": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD-DataAccess-Tier\\clsTestAppointmentData.cs",
-              "RelativeDocumentMoniker": "..\\DVLD-DataAccess-Tier\\clsTestAppointmentData.cs",
-              "ToolTip": "C:\\Users\\Anas_\\source\\repos\\DVLD Solution\\DVLD\\DVLD-DataAccess-Tier\\clsTestAppointmentData.cs",
-              "RelativeToolTip": "..\\DVLD-DataAccess-Tier\\clsTestAppointmentData.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAmwIwAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T05:54:42.152Z",
-              "EditorCaption": ""
             }
           ]
         }

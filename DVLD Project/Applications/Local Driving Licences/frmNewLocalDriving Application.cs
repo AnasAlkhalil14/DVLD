@@ -20,30 +20,54 @@ namespace DVLD.Applications.Local_Driving_Licences
         public frmNewLocalDriving_Application()
         {
             InitializeComponent();
-            Application=new clsApplication();
-            LocalDrivingLicenseApplications=new clsLocalDrivingLicenseApplications();
+            Mode = enMode.eAdd;
+
         }
+        public frmNewLocalDriving_Application(int LDLAppID)
+        {
+            InitializeComponent();
+            this.LDLAppID = LDLAppID;
+            Mode = enMode.eUpdate;
+
+
+
+        }
+        int LDLAppID;
         clsApplication Application;
         clsLocalDrivingLicenseApplications LocalDrivingLicenseApplications;
 
+        enum enMode { eAdd,eUpdate}
+        enMode Mode = enMode.eAdd;
+
         public event Action OnSave;
 
-        private void tpApplicationInfo_Click(object sender, EventArgs e)
+
+        private void SettingsOnLoadForUpdate()
         {
+
+
+            Application = clsApplication.Find(clsLocalDrivingLicenseApplications.AppID(LDLAppID));
+            lblMode.Text = "Update";
+            lblApplicationDate.Text = Application.ApplicationDate.ToShortDateString();
+            cbLicenceClass.SelectedValue =clsLicenseClass.ClassIDByLDLAppID(LDLAppID);
+            int PersonID = clsLocalDrivingLicenseApplications.PersonIDByLocalDLAppID(LDLAppID);
+            ctrlFilterPerson1.ctrlPersonInfo1.LoadPersonInfo(PersonID);
+            ctrlFilterPerson1.gbFilters.Enabled = false;
+            ctrlFilterPerson1.cbFilterBy.SelectedIndex = 1;
+            ctrlFilterPerson1.txtFilterValue.Text = PersonID.ToString();
+
 
         }
 
-        private void tcApplicationInfo_Enter(object sender, EventArgs e)
+
+        private void SettingsOnLoadForAdd()
         {
-            
-        }
-        private void FormInfoAndSettingsOnLoad()
-        {
+            Application = new clsApplication();
+            LocalDrivingLicenseApplications = new clsLocalDrivingLicenseApplications();
+            lblMode.Text = "   New";
 
             lblApplicationDate.Text = DateTime.Now.ToShortDateString();
-            cbLicenceClass.DataSource = clsLocalDrivingLicenseApplications.GetAllLicenceClasses();
-            cbLicenceClass.DisplayMember = "ClassName";
-            cbLicenceClass.ValueMember = "LicenseClassID";
+           
             cbLicenceClass.SelectedValue = 3;
 
             Application.ApplicationTypeID = 1;
@@ -52,15 +76,35 @@ namespace DVLD.Applications.Local_Driving_Licences
             Application.CreatedByUserID = clsGlobal.User.UserID;
             Application.ApplicationStatus = 1;
 
-            lblApplicationFees.Text = Application.PaidFees.ToString();
-            lblCreatedBy.Text = clsGlobal.User.UserName;
+          
 
         }
         private void frmNewLocalDriving_Application_Load(object sender, EventArgs e)
         {
+            cbLicenceClass.DataSource = clsLocalDrivingLicenseApplications.GetAllLicenceClasses();
+            cbLicenceClass.DisplayMember = "ClassName";
+            cbLicenceClass.ValueMember = "LicenseClassID";
+            if (Mode==enMode.eUpdate) SettingsOnLoadForUpdate();
+            else SettingsOnLoadForAdd();
+
+
+
+
             ctrlFilterPerson1.OnFind += CtrlFilterPerson1_OnFind;
 
-            FormInfoAndSettingsOnLoad();
+
+         
+            lblApplicationFees.Text = Application.PaidFees.ToString();
+            lblCreatedBy.Text = clsGlobal.User.UserName;
+
+
+            ctrlFilterPerson1.ctrlPersonInfo1.OnSave += CtrlPersonInfo1_OnSave;
+
+        }
+
+        private void CtrlPersonInfo1_OnSave()
+        {
+            OnSave?.Invoke();
         }
 
         private void CtrlFilterPerson1_OnFind()
@@ -89,32 +133,58 @@ namespace DVLD.Applications.Local_Driving_Licences
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(CheckEveryThingBeforeSave())
+            switch (Mode)
             {
-                if(Application.Add())
-                {
-                    LocalDrivingLicenseApplications.ApplicationID = Application.ApplicationID;
-                    LocalDrivingLicenseApplications.LicenseClassID = Convert.ToInt32(cbLicenceClass.SelectedValue.ToString());
-                    if(LocalDrivingLicenseApplications.Add())
+                case enMode.eAdd:
                     {
-                        OnSave?.Invoke();
+                        if (CheckEveryThingBeforeSave())
+                        {
+                            if (Application.Add())
+                            {
+                                LocalDrivingLicenseApplications.ApplicationID = Application.ApplicationID;
+                                LocalDrivingLicenseApplications.LicenseClassID = Convert.ToInt32(cbLicenceClass.SelectedValue.ToString());
+                                if (LocalDrivingLicenseApplications.Add())
+                                {
+                                    OnSave?.Invoke();
 
-                        MessageBox.Show("Local Driving Licence Application added successfully with id=" + LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID + " for person with id=" + Application.ApplicantPersonID, "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                     }
-                    else
+                                    MessageBox.Show("Local Driving License Application added successfully with id=" + LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID + " for person with id=" + Application.ApplicantPersonID, "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Some thing wrong happen call the help center", "Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Some thing wrong happen call the help center", "Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+
+
+                        }
+                        break;
+                    }
+                case enMode.eUpdate:
                     {
-                        MessageBox.Show("Some thing wrong happen call the help center", "Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                         if(clsLocalDrivingLicenseApplications.Update(LDLAppID, Convert.ToInt32(cbLicenceClass.SelectedValue.ToString())))
+                        {
+                            MessageBox.Show("Local Driving License Application Updated successfully with id=" + LDLAppID + " for person with id=" + Application.ApplicantPersonID, "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            OnSave?.Invoke();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Some thing wrong happen call the help center", "Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        }
+                        break;
                     }
 
-                }
-                else
-                {
-                    MessageBox.Show("Some thing wrong happen call the help center", "Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-              
-
-
             }
+
+           
            
 
         }
@@ -124,9 +194,8 @@ namespace DVLD.Applications.Local_Driving_Licences
             tcApplicationInfo.SelectedIndex = 1;
         }
 
-        private void cbLicenceClass_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
+        
+
+       
     }
 }

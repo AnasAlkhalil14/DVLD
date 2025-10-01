@@ -1,4 +1,6 @@
-﻿using DVLD_Business_Tier;
+﻿using DVLD.Applications.Tests.Vision_Test;
+using DVLD.Properties;
+using DVLD_Business_Tier;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,26 +13,60 @@ using System.Windows.Forms;
 
 namespace DVLD.Applications.Tests
 {
-    public partial class frmVisionTestAppointment : Form
+    public partial class frmTestAppointments : Form
     {
-        public frmVisionTestAppointment(int LDLAppID)
+        public frmTestAppointments(int LDLAppID,int TestTypeID)
         {
             InitializeComponent();
         ctrlDrivingLicenseApplicationInfo1.LoadDataInfo(LDLAppID);
         this.LDLAppID = LDLAppID;
+          this.TestTypeID = TestTypeID;
         }
+        int TestTypeID;
         int LDLAppID;
         bool IsRetakeTestApp=false;
-
+        public event Action OnPass;
+        public event Action OnEditPerson;
         void RefreshForm()
         {
-            dgvAppointmentList.DataSource = clsTestAppointment.AllTestAppointment(LDLAppID, 1);
+            dgvAppointmentList.DataSource = clsTestAppointment.AllTestAppointment(LDLAppID, TestTypeID);
             lblRecords.Text = dgvAppointmentList.Rows.Count.ToString();
         }
         private void frmVisionTestAppointment_Load(object sender, EventArgs e)
         {
             RefreshForm();
+            SetHeaderFormByTestType();
+            ctrlDrivingLicenseApplicationInfo1.OnEditPerson += CtrlDrivingLicenseApplicationInfo1_OnEditPerson;
         }
+
+        private void CtrlDrivingLicenseApplicationInfo1_OnEditPerson()
+        {
+            OnEditPerson?.Invoke();
+        }
+
+        void SetHeaderFormByTestType()
+        {
+          if(TestTypeID==1)
+            {
+                lblTestType.Text = "Vision Test Appointment";
+                pbTestType.Image = Resources.Vision_512;
+            }
+          else if(TestTypeID==2)
+            {
+                lblTestType.Text = "Written Test Appointment";
+                pbTestType.Image = Resources.Written_Test_512;
+            }
+          else
+            {
+                lblTestType.Text = "Street Test Appointment";
+                pbTestType.Image = Resources.driving_test_512; ;
+
+            }
+ 
+
+
+        }
+
 
         
         private void button2_Click(object sender, EventArgs e)
@@ -40,7 +76,7 @@ namespace DVLD.Applications.Tests
        bool ChickIfAllowAddAppointment()
         {
 
-            if(clsTestAppointment.ChickIfHasWaitingAppointment(LDLAppID,1))
+            if(clsTestAppointment.ChickIfHasWaitingAppointment(LDLAppID,TestTypeID))
             {
                 IsRetakeTestApp = false;
 
@@ -48,7 +84,7 @@ namespace DVLD.Applications.Tests
                 return false;
 
             }
-            if(clsTestAppointment.ChickForTestResult(LDLAppID,1,1))
+            if(clsTestAppointment.ChickForTestResult(LDLAppID,TestTypeID,1))
             {
                 IsRetakeTestApp = false;
 
@@ -56,7 +92,7 @@ namespace DVLD.Applications.Tests
                 return false;
 
             }
-            if(clsTestAppointment.ChickForTestResult(LDLAppID,1,0))
+            if(clsTestAppointment.ChickForTestResult(LDLAppID,TestTypeID,0))
             {
                 IsRetakeTestApp = true;
                 return true;
@@ -71,7 +107,7 @@ namespace DVLD.Applications.Tests
         {
             if(ChickIfAllowAddAppointment())
             {
-                frmScheduleVisionTest frm=new frmScheduleVisionTest(LDLAppID,IsRetakeTestApp);
+                frmScheduleTest frm=new frmScheduleTest(LDLAppID,IsRetakeTestApp,TestTypeID);
                 frm.OnSave += Frm_OnSave;
                 frm.ShowDialog();
 
@@ -86,14 +122,30 @@ namespace DVLD.Applications.Tests
 
         private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int TestAppointmentID = Convert.ToInt32(dgvAppointmentList.CurrentRow.Cells["TestAppointmentID"].Value);
+
+            frmTakeTest frm = new frmTakeTest(TestAppointmentID);
+            frm.OnPass += Frm_OnPass;
+          frm.OnSave+= Frm_OnSave;
+            frm.ShowDialog();
+        }
+
+        private void Frm_OnPass()
+        {
+            this.OnPass?.Invoke();
 
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+
+
+
             bool IsLocked = Convert.ToBoolean(dgvAppointmentList.CurrentRow.Cells["IsLocked"].Value);
             int TestAppointmentID = Convert.ToInt32(dgvAppointmentList.CurrentRow.Cells["TestAppointmentID"].Value);
-            frmScheduleVisionTest frm = new frmScheduleVisionTest(LDLAppID,IsRetakeTestApp,TestAppointmentID,IsLocked);
+            IsRetakeTestApp = false;
+            frmScheduleTest frm = new frmScheduleTest(LDLAppID,IsRetakeTestApp,TestAppointmentID,IsLocked);
             frm.OnSave += Frm_OnSave;
             frm.ShowDialog();
         }

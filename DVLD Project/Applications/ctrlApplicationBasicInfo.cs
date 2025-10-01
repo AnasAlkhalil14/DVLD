@@ -19,6 +19,7 @@ namespace DVLD.Applications
             InitializeComponent();
         }
         clsApplication Application;
+        public event Action OnEditPerson;
         public void LoadDataApplicationInfo(int AppID)
         {
             Application=clsApplication.Find(AppID);
@@ -69,6 +70,19 @@ namespace DVLD.Applications
         private void CtrlPersonInfo1_OnSave()
         {
             lblFullName.Text=clsPerson.FullName(Application.ApplicantPersonID);
+            OnEditPerson?.Invoke();
+        }
+
+        public int ApplicationID
+        {
+            get { return Application.ApplicationID; }
+        }
+        public int PersonID { get { return Application.ApplicantPersonID; } }
+      
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

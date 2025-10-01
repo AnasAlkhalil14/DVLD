@@ -1,6 +1,6 @@
 ﻿namespace DVLD.Applications.Tests
 {
-    partial class frmScheduleVisionTest
+    partial class frmScheduleTest
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gbVisionTest = new System.Windows.Forms.GroupBox();
+            this.lblLockNote = new System.Windows.Forms.Label();
             this.gbRetakeTestInfo = new System.Windows.Forms.GroupBox();
             this.lblTotalFees = new System.Windows.Forms.Label();
             this.lblRTestAppID = new System.Windows.Forms.Label();
@@ -60,8 +61,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblLockNote = new System.Windows.Forms.Label();
+            this.pbTestType = new System.Windows.Forms.PictureBox();
             this.gbVisionTest.SuspendLayout();
             this.gbRetakeTestInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
@@ -73,7 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).BeginInit();
             this.SuspendLayout();
             // 
             // gbVisionTest
@@ -100,14 +100,27 @@
             this.gbVisionTest.Controls.Add(this.label3);
             this.gbVisionTest.Controls.Add(this.label2);
             this.gbVisionTest.Controls.Add(this.lblScheduleTest);
-            this.gbVisionTest.Controls.Add(this.pictureBox1);
+            this.gbVisionTest.Controls.Add(this.pbTestType);
             this.gbVisionTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbVisionTest.Location = new System.Drawing.Point(12, 37);
             this.gbVisionTest.Name = "gbVisionTest";
             this.gbVisionTest.Size = new System.Drawing.Size(776, 797);
             this.gbVisionTest.TabIndex = 0;
             this.gbVisionTest.TabStop = false;
-            this.gbVisionTest.Text = "Vision Test";
+            this.gbVisionTest.Text = "Appointment info:";
+            this.gbVisionTest.Enter += new System.EventHandler(this.gbVisionTest_Enter);
+            // 
+            // lblLockNote
+            // 
+            this.lblLockNote.AutoSize = true;
+            this.lblLockNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLockNote.ForeColor = System.Drawing.Color.Red;
+            this.lblLockNote.Location = new System.Drawing.Point(141, 247);
+            this.lblLockNote.Name = "lblLockNote";
+            this.lblLockNote.Size = new System.Drawing.Size(502, 25);
+            this.lblLockNote.TabIndex = 43;
+            this.lblLockNote.Text = "Person already sat for the test,Appointment locked.";
+            this.lblLockNote.Visible = false;
             // 
             // gbRetakeTestInfo
             // 
@@ -302,11 +315,11 @@
             // 
             this.lblScheduleTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScheduleTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblScheduleTest.Location = new System.Drawing.Point(137, 193);
+            this.lblScheduleTest.Location = new System.Drawing.Point(80, 181);
             this.lblScheduleTest.Name = "lblScheduleTest";
-            this.lblScheduleTest.Size = new System.Drawing.Size(492, 54);
+            this.lblScheduleTest.Size = new System.Drawing.Size(563, 54);
             this.lblScheduleTest.TabIndex = 3;
-            this.lblScheduleTest.Text = "      Schedule Test";
+            this.lblScheduleTest.Text = "         Schedule Test";
             // 
             // btnClose
             // 
@@ -427,36 +440,24 @@
             this.pictureBox2.TabIndex = 19;
             this.pictureBox2.TabStop = false;
             // 
-            // pictureBox1
+            // pbTestType
             // 
-            this.pictureBox1.Image = global::DVLD.Properties.Resources.Vision_512;
-            this.pictureBox1.Location = new System.Drawing.Point(306, 29);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(146, 161);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.pbTestType.Image = global::DVLD.Properties.Resources.Vision_512;
+            this.pbTestType.Location = new System.Drawing.Point(298, 17);
+            this.pbTestType.Name = "pbTestType";
+            this.pbTestType.Size = new System.Drawing.Size(146, 161);
+            this.pbTestType.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbTestType.TabIndex = 2;
+            this.pbTestType.TabStop = false;
             // 
-            // lblLockNote
-            // 
-            this.lblLockNote.AutoSize = true;
-            this.lblLockNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLockNote.ForeColor = System.Drawing.Color.Red;
-            this.lblLockNote.Location = new System.Drawing.Point(141, 247);
-            this.lblLockNote.Name = "lblLockNote";
-            this.lblLockNote.Size = new System.Drawing.Size(502, 25);
-            this.lblLockNote.TabIndex = 43;
-            this.lblLockNote.Text = "Person already sat for the test,Appointment locked.";
-            this.lblLockNote.Visible = false;
-            // 
-            // frmScheduleVisionTest
+            // frmScheduleTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 900);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.gbVisionTest);
-            this.Name = "frmScheduleVisionTest";
+            this.Name = "frmScheduleTest";
             this.Text = "Schedule Test";
             this.Load += new System.EventHandler(this.frmScheduleVisionTest_Load);
             this.gbVisionTest.ResumeLayout(false);
@@ -472,7 +473,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -480,7 +481,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gbVisionTest;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbTestType;
         private System.Windows.Forms.Label lblScheduleTest;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;

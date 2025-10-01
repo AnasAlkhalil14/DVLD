@@ -1,4 +1,5 @@
 ﻿using DVLD.Applications.Tests;
+using DVLD.Licenses;
 using DVLD_Business_Tier;
 using System;
 using System.Collections.Generic;
@@ -36,29 +37,42 @@ namespace DVLD.Applications.Local_Driving_Licences
         }
         void SetEnaplityForTests()
         {
-            if (dgvLocalLicenseApplicationsList.SelectedRows.Count <= 0) return; 
-            string AppState = dgvLocalLicenseApplicationsList.CurrentRow.Cells["Status"].Value.ToString();
-            if(AppState.ToLower() =="cancelled")
-            {
-                tsmScheduleVisionTest.Enabled = false;
-                tsmScheduleWrittenTest.Enabled = false;
-                tsmScheduleStreetTest.Enabled = false;
-                return;
-            }
+           
             int PassedTestCount = Convert.ToInt32(dgvLocalLicenseApplicationsList.CurrentRow.Cells["PassedTestCount"].Value);
              if(PassedTestCount== 0)
             {
+                tsmEditApplication.Enabled = true;
+
                 tsmScheduleVisionTest.Enabled=true;
                 tsmScheduleWrittenTest.Enabled=false;
                 tsmScheduleStreetTest.Enabled=false;
-                return;
+                int LDLAppID = Convert.ToInt32(dgvLocalLicenseApplicationsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+                if (clsTestAppointment.AllTestAppointment(LDLAppID, 1).Rows.Count == 0)
+                {
+                    tsmDeleteApplication.Enabled = true;
+                }
+                else
+                {
+                    
+                    tsmDeleteApplication.Enabled = false;
+                }
+                tsmIssueDrivingLicense.Enabled = false;
+                
+
+
+
+                    return;
             }
+            tsmEditApplication.Enabled = false;
+            tsmDeleteApplication.Enabled = false;
             if (PassedTestCount == 1)
             {
                 tsmScheduleVisionTest.Enabled = false;
                 tsmScheduleWrittenTest.Enabled = true;
                 tsmScheduleStreetTest.Enabled = false;
 
+                tsmIssueDrivingLicense.Enabled = false;
+               
                 return;
               }
             if (PassedTestCount == 2)
@@ -66,18 +80,78 @@ namespace DVLD.Applications.Local_Driving_Licences
                 tsmScheduleVisionTest.Enabled = false;
                 tsmScheduleWrittenTest.Enabled = false;
                 tsmScheduleStreetTest.Enabled = true ;
+
+                tsmIssueDrivingLicense.Enabled = false;
+              
             }
             if (PassedTestCount == 3)
             {
                 tsmScheduleVisionTest.Enabled = false;
                 tsmScheduleWrittenTest.Enabled = false;
                 tsmScheduleStreetTest.Enabled = false;
+                tsmScheduleTest.Enabled = false;
+                tsmIssueDrivingLicense.Enabled = true;
+               
+
             }
 
 
 
 
         }
+        void SetEnaplityForCanceleCase()
+        {
+             tsmCanceleApplication.Enabled= false;
+            tsmDeleteApplication.Enabled= false;
+            tsmEditApplication.Enabled= false;
+            tsmIssueDrivingLicense.Enabled= false;
+            tsmScheduleTest.Enabled = false;
+            tsmShowLicense.Enabled = false;
+
+
+
+        }
+        void SetEnaplityForCompletedCase()
+        {
+            tsmCanceleApplication.Enabled = false;
+            tsmDeleteApplication.Enabled = false;
+            tsmEditApplication.Enabled = false;
+            tsmIssueDrivingLicense.Enabled = false;
+            tsmScheduleTest.Enabled = false;
+            tsmShowLicense.Enabled = true;
+
+
+
+        }
+        void SetEnaplityForNewCase()
+        {
+            tsmScheduleTest.Enabled = true;
+            tsmCanceleApplication.Enabled = true;
+
+            tsmShowLicense.Enabled = false;
+            SetEnaplityForTests();
+
+        }
+        void SetEnaplityForMenueItems()
+        {
+
+            if (dgvLocalLicenseApplicationsList.SelectedRows.Count <= 0) return;
+
+            string AppState = dgvLocalLicenseApplicationsList.CurrentRow.Cells["Status"].Value.ToString();
+            if (AppState == "Cancelled") { SetEnaplityForCanceleCase(); return; }
+            if (AppState == "Completed") { SetEnaplityForCompletedCase();return; }
+
+
+            SetEnaplityForNewCase();
+
+
+
+
+
+
+        }
+
+
         void RefreshForm()
         {
             DataTable AllLocalLicenseApplication = clsLocalDrivingLicenseApplications.GetAllLocalLicenseApplication();
@@ -197,13 +271,7 @@ namespace DVLD.Applications.Local_Driving_Licences
 
         private void canceleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string Status= dgvLocalLicenseApplicationsList.CurrentRow.Cells["Status"].Value.ToString();
-            if(Status!="New")
-            {
-                MessageBox.Show("Status is "+ Status+" so it can not be cancelled","Worng",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return;
-
-            }
+            
 
 
             int LDLApplicationID = Convert.ToInt32(dgvLocalLicenseApplicationsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
@@ -240,25 +308,127 @@ namespace DVLD.Applications.Local_Driving_Licences
 
         private void editApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int LDLAppID = Convert.ToInt32(dgvLocalLicenseApplicationsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
 
+            frmNewLocalDriving_Application frm = new frmNewLocalDriving_Application(LDLAppID);
+            frm.OnSave += Frm_OnSave;
+            frm.ShowDialog();
         }
+
+        
 
         private void sToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int LDLAppID = Convert.ToInt32(dgvLocalLicenseApplicationsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
-            frmVisionTestAppointment frm = new frmVisionTestAppointment(LDLAppID);
+            frmTestAppointments frm = new frmTestAppointments(LDLAppID,1);
+            frm.OnPass += Frm_OnPass;
+            frm.OnEditPerson += Frm_OnEditPerson;
             frm.ShowDialog();
 
         }
 
+        private void Frm_OnPass()
+        {
+           RefreshForm();
+        }
+
         private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int LDLAppID = Convert.ToInt32(dgvLocalLicenseApplicationsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+            frmTestAppointments frm = new frmTestAppointments(LDLAppID,2);
+            frm.OnPass += Frm_OnPass;
+            frm.OnEditPerson += Frm_OnEditPerson;
 
+            frm.ShowDialog();
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
-            SetEnaplityForTests();
+            SetEnaplityForMenueItems();
+ 
+        }
+
+        private void tsmScheduleStreetTest_Click(object sender, EventArgs e)
+        {
+            int LDLAppID = Convert.ToInt32(dgvLocalLicenseApplicationsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+            frmTestAppointments frm = new frmTestAppointments(LDLAppID, 3);
+            frm.OnPass += Frm_OnPass;
+            frm.OnEditPerson += Frm_OnEditPerson;
+
+            frm.ShowDialog();
+        }
+
+        private void tsmIssueDrivingLicense_Click(object sender, EventArgs e)
+        {
+            int LDLAppID = Convert.ToInt32(dgvLocalLicenseApplicationsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+
+            frmIssueDrivingLicenseForFirstTime frm = new frmIssueDrivingLicenseForFirstTime(LDLAppID);
+            frm.OnSave += Frm_OnIssueLicense;
+            frm.ShowDialog();
+
+        }
+        private void Frm_OnIssueLicense(int LDLAppID)
+        {
+             clsLocalDrivingLicenseApplications.MakeApplicationComplited(LDLAppID);
+            RefreshForm();
+        }
+
+        private void tsmShowLicense_Click(object sender, EventArgs e)
+        {
+            int LDLAppID = Convert.ToInt32(dgvLocalLicenseApplicationsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+
+            int LicenseID =clsLicense.GetLicenseIDByAppID(clsLocalDrivingLicenseApplications.AppID(LDLAppID));
+           frmLicenseInfo frm=new frmLicenseInfo(LicenseID);
+            frm.ShowDialog();
+        }
+
+        private void tsmShowApplicationDetails_Click(object sender, EventArgs e)
+        {
+            int LDLAppID = Convert.ToInt32(dgvLocalLicenseApplicationsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+
+            frmLDLApplicationDetails frm = new frmLDLApplicationDetails(LDLAppID);
+            frm.OnEditPerson += Frm_OnEditPerson;
+            frm.ShowDialog();
+        }
+
+        private void Frm_OnEditPerson()
+        {
+           RefreshForm();
+        }
+
+        private void tsmShowPersonLicenseHistory_Click(object sender, EventArgs e)
+        {
+            int LDLAppID = Convert.ToInt32(dgvLocalLicenseApplicationsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+int PersonID=clsLocalDrivingLicenseApplications.PersonIDByLocalDLAppID(LDLAppID);
+            frmLicenseHistory frm=new frmLicenseHistory(PersonID);
+            frm.OnEditPerson += Frm_OnEditPerson;
+            frm.ShowDialog();
+        }
+
+        private void tsmDeleteApplication_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Are you sure you want to delete this L.D.L.App?","Confirm",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+            {
+
+                int LDLAppID = Convert.ToInt32(dgvLocalLicenseApplicationsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+
+                if (clsLocalDrivingLicenseApplications.Delete(LDLAppID))
+                {
+                    MessageBox.Show("Done Successfully", "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RefreshForm();
+                }
+                else
+                {
+                    MessageBox.Show("Some thing wrong happen,may be this Application has data link to it", "Result", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
+
+
+            }
+
+
+
 
         }
     }
