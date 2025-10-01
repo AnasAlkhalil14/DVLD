@@ -44,6 +44,11 @@
     <Compile Include="clsApplicationData.cs" />
     <Compile Include="clsApplicationTypesData.cs" />
     <Compile Include="clsConnectionString.cs" />
+    <Compile Include="clsDetainedLicenseData.cs" />
+    <Compile Include="clsDriverData.cs" />
+    <Compile Include="clsInternationalDrivingLicenseApplicationsData.cs" />
+    <Compile Include="clsLicenseClassData.cs" />
+    <Compile Include="clsLicenseData.cs" />
     <Compile Include="clsLocalDrivingLicenseApplicationsData.cs" />
     <Compile Include="clsPersonData.cs" />
     <Compile Include="clsTestAppointmentData.cs" />

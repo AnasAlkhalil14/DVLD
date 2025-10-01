@@ -10,6 +10,46 @@ namespace DVLD_DataAccess_Tier
 {
     public class clsTestAppointmentData
     {
+      
+
+        
+
+
+        public static bool FindByID(int ID,ref int TestTypeID, ref int LocalDrivingLicenseApplicationID, ref DateTime AppointmentDate, ref double PaidFees, ref int CreatedByUserID, ref int IsLocked, ref int RetakeTestApplicationID)
+        {
+            bool IsFound=false;
+            SqlConnection connection=new SqlConnection(clsConnectionString.ConnectionString);
+            string query = @"Select * from TestAppointments where TestAppointmentID=@ID";
+            SqlCommand command=new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ID", ID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    TestTypeID = Convert.ToInt32(reader["TestTypeID"]);
+                    LocalDrivingLicenseApplicationID = Convert.ToInt32(reader["LocalDrivingLicenseApplicationID"]);
+                    AppointmentDate = Convert.ToDateTime(reader["AppointmentDate"]);
+                    PaidFees = Convert.ToDouble(reader["PaidFees"]);
+                    CreatedByUserID = Convert.ToInt32(reader["CreatedByUserID"]);
+                    IsLocked = Convert.ToInt32(reader["IsLocked"]);
+                    if(reader["RetakeTestApplicationID"]!=DBNull.Value)
+                    RetakeTestApplicationID = Convert.ToInt32(reader["RetakeTestApplicationID"]);
+                    else
+                    {
+                        RetakeTestApplicationID = -1;
+                    }
+
+                        IsFound = true;
+
+                }
+                reader.Close();
+            }
+            catch (Exception ex) { }
+            finally { connection.Close(); }
+            return IsFound;
+        }
         public static bool ChickIfHasWaitingAppointment(int LDLAppID, int TestType)
         {
             bool isLocked = false;
@@ -151,7 +191,45 @@ where Ta.LocalDrivingLicenseApplicationID=@LDLAppID and TA.TestTypeID=@TestType;
 
         }
 
+        public static bool MakeAppointmentLock(int TestAppointmentID)
+        {
+            int RowAffected = 0;
+            SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString);
+            string query = @"Update TestAppointments set IsLocked=1 where TestAppointmentID=@TestAppointmentID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+            try
+            {
+                connection.Open();
+                RowAffected = command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex) { }
+            finally { connection.Close(); }
+            return RowAffected > 0;
+
+        }
+        public static DateTime GetLastAppointmentDate(int LDLAppID,int TestTypeID)
+        {
+            DateTime dt = DateTime.MinValue;
+            SqlConnection connection= new SqlConnection(clsConnectionString.ConnectionString);
+            string query = @"select  max(TA.AppointmentDate) from 
+TestAppointments TA
+where TA.LocalDrivingLicenseApplicationID=@LDLAppID and TA.TestTypeID=@TestTypeID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+            command.Parameters.AddWithValue("@LDLAppID", LDLAppID);
+            try
+            {
+                connection.Open();
+                dt = Convert.ToDateTime(command.ExecuteScalar());
+            }
+            catch (Exception ex) { }
+            finally { connection.Close(); }
+            return dt;
 
 
+
+        }
     }
 }

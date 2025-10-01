@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.SymbolStore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +12,43 @@ namespace DVLD_DataAccess_Tier
 {
     public class clsLocalDrivingLicenseApplicationsData
     {
+
+
+        public static bool Delete(int LDLAppID)
+        {
+            int RowAffected = 0;
+            SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString);
+            string query = @"Delete from LocalDrivingLicenseApplications where LocalDrivingLicenseApplicationID=@LDLAppID";
+            SqlCommand command=new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLAppID", LDLAppID);
+            try
+            {
+                connection.Open();
+                RowAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception ex) { }
+            finally { connection.Close(); }
+            return RowAffected > 0;
+        
+        }
+        public static bool Update(int LDLAppID,int LicenseClassID)
+        {
+            int RowAffected = 0;
+            SqlConnection connection=new SqlConnection(clsConnectionString.ConnectionString);
+            string query = @"Update LocalDrivingLicenseApplications set LicenseClassID=@LicenseClassID where LocalDrivingLicenseApplicationID=@LDLAppID";
+            SqlCommand command=new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+            command.Parameters.AddWithValue("@LDLAppID", LDLAppID);
+            try
+            {
+                connection.Open();
+                RowAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception ex) { }
+            finally { connection.Close(); }
+            return RowAffected > 0;
+
+        }
 
         public static int Add(int ApplicationID, int LicenseClassID)
         {
@@ -272,7 +311,31 @@ from Applications a join LocalDrivingLicenseApplications l on a.ApplicationID=l.
 
 
         }
+        public static bool MakeApplicationComplited(int LDLAppID)
+        {
+            int RowAffected = 0;
+            SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString);
+            string query = @"Update a set a.ApplicationStatus=3 ,a.LastStatusDate=@Now
+from Applications a join LocalDrivingLicenseApplications l on a.ApplicationID=l.ApplicationID
+                           where
+   l.LocalDrivingLicenseApplicationID=@LDLApplicationID and a.ApplicationStatus=1";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLAppID);
+            command.Parameters.AddWithValue("@Now", DateTime.Now);
+            try
+            {
+                connection.Open();
+                RowAffected = command.ExecuteNonQuery();
 
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally { connection.Close(); }
+            return RowAffected > 0;
+
+        }
         public static string GetLicenseClassName(int LocalDrivingLicenseApplicationID)
         {
             string ClassName = "";

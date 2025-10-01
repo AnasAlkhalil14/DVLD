@@ -834,7 +834,7 @@ FROM     People INNER JOIN
         {
             string FullName = "";
 SqlConnection connection=new SqlConnection(clsConnectionString.ConnectionString);
-            string query = "Select FullName=FirstName+' '+SecondName+' '+ThirdName+' '+LastName from People where PersonID=@PersonID";
+            string query = "Select FullName=CONCAT_WS(' ', FirstName,SecondName,ThirdName, LastName) from People where PersonID=@PersonID";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@PersonID", PersonID);
             try

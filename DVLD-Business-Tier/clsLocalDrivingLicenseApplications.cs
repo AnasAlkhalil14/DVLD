@@ -21,13 +21,20 @@ namespace DVLD_Business_Tier
             LocalDrivingLicenseApplicationID = -1;
 
         }
-
+        public static bool Update(int LDLAppID,int LicenseClassID)
+        {
+            return clsLocalDrivingLicenseApplicationsData.Update(LDLAppID, LicenseClassID);
+        }
         public bool Add()
         {
             LocalDrivingLicenseApplicationID = clsLocalDrivingLicenseApplicationsData.Add(ApplicationID, LicenseClassID);
             return LocalDrivingLicenseApplicationID != -1;
         }
 
+        public static bool Delete(int LDLAppID)
+        {
+            return clsLocalDrivingLicenseApplicationsData.Delete(LDLAppID);
+        }
         public static DataTable GetAllLicenceClasses()
         {
             return clsLocalDrivingLicenseApplicationsData.GetAllLicenceClasses();
@@ -75,6 +82,13 @@ namespace DVLD_Business_Tier
             return clsLocalDrivingLicenseApplicationsData.CanceleApplication(LDLApplicationID);
 
         }
+        public static bool MakeApplicationComplited(int LDLAppID)
+        {
+            return  clsLocalDrivingLicenseApplicationsData.MakeApplicationComplited(LDLAppID) ;
+        }
+
+
+
         public static string FullName(int LDLAppID)
         {
             return clsLocalDrivingLicenseApplicationsData.GetFullName(LDLAppID);

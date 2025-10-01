@@ -53,7 +53,20 @@ namespace DVLD_Business_Tier
             Mode = enMode.eUpdate;
         }
 
+public static clsTestAppointment Find(int TestAppointmentID)
+        {
+            int TestTypeID = -1; int LocalDrivingLicenseApplicationID = -1;
+            DateTime AppointmentDate = DateTime.Now;
+            double PaidFees = -1;
+            int CreatedByUserID = -1; int IsLocked = -1;
+            int RetakeTestApplicationID= -1;
+            if(clsTestAppointmentData.FindByID(TestAppointmentID,ref TestTypeID,ref LocalDrivingLicenseApplicationID,ref AppointmentDate,ref PaidFees,ref CreatedByUserID,ref IsLocked,ref RetakeTestApplicationID))
+            {
+                return new clsTestAppointment(TestAppointmentID, TestTypeID, LocalDrivingLicenseApplicationID, AppointmentDate, PaidFees,CreatedByUserID,IsLocked,RetakeTestApplicationID);
+            }
 
+            return null;
+        }
 
   public static bool ChickIfHasWaitingAppointment(int LDLAppID,int TestTypeID)
         {
@@ -95,6 +108,19 @@ namespace DVLD_Business_Tier
             return clsTestAppointmentData.EditAppointmentDate(TestAppointmentID,Date);
         }
 
+        public static DateTime GetLastAppointmentDate(int LDLAppID, int TestTypeID)
+        {
+            return clsTestAppointmentData.GetLastAppointmentDate(LDLAppID, TestTypeID);
+        }
 
+        public  bool MakeAppointmentLock()
+        {
+            return clsTestAppointmentData.MakeAppointmentLock(TestAppointmentID);
+        }
+    
+        public static bool MakeAppointmentLock(int TestAppointmentID)
+        {
+           return clsTestAppointmentData.MakeAppointmentLock(TestAppointmentID);
+        }
     }
 }
